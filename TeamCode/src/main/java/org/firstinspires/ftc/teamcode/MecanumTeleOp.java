@@ -46,35 +46,7 @@ public class MecanumTeleOp extends LinearOpMode {
     if (isStopRequested()) return;
 
     while (opModeIsActive()) {
-      double y = -gamepad1.left_stick_y;
-      double x = gamepad1.left_stick_x;
-      double rx = -gamepad1.right_stick_x;
-
-      double denominator = Math.max(
-        Math.abs(y) + Math.abs(x) + Math.abs(rx),
-        1
-      );
-      double Flp = (y - x + rx) / denominator;
-      double Blp = (y + x + rx) / denominator;
-      double Frp = (y - x - rx) / denominator;
-      double Brp = (y + x - rx) / denominator;
-
-      if (gamepad1.right_bumper && gamepad1.left_bumper) {
-        Fr.setPower(Frp * 0.25);
-        Fl.setPower(Flp * 0.25);
-        Br.setPower(Brp * 0.25);
-        Bl.setPower(Blp * 0.25);
-      } else if (gamepad1.right_bumper) {
-        Fr.setPower(Frp * 0.5);
-        Fl.setPower(Flp * 0.5);
-        Br.setPower(Brp * 0.5);
-        Bl.setPower(Blp * 0.5);
-      } else {
-        Fr.setPower(Frp);
-        Fl.setPower(Flp);
-        Br.setPower(Brp);
-        Bl.setPower(Blp);
-      }
+      setPower();
 
       if (gamepad2.b) {
         target = 2100 + EncoderSlidesFix;
@@ -146,6 +118,38 @@ public class MecanumTeleOp extends LinearOpMode {
 
       Ll.setPower(Power);
       Lr.setPower(-Power);
+    }
+
+    void setPower() {
+      double y = -gamepad1.left_stick_y;
+      double x = gamepad1.left_stick_x;
+      double rx = -gamepad1.right_stick_x;
+
+      double denominator = Math.max(
+        Math.abs(y) + Math.abs(x) + Math.abs(rx),
+        1
+      );
+      double Flp = (y - x + rx) / denominator;
+      double Blp = (y + x + rx) / denominator;
+      double Frp = (y - x - rx) / denominator;
+      double Brp = (y + x - rx) / denominator;
+
+      if (gamepad1.right_bumper && gamepad1.left_bumper) {
+        Fr.setPower(Frp * 0.25);
+        Fl.setPower(Flp * 0.25);
+        Br.setPower(Brp * 0.25);
+        Bl.setPower(Blp * 0.25);
+      } else if (gamepad1.right_bumper || gamepad1.left_bumper) {
+        Fr.setPower(Frp * 0.5);
+        Fl.setPower(Flp * 0.5);
+        Br.setPower(Brp * 0.5);
+        Bl.setPower(Blp * 0.5);
+      } else {
+        Fr.setPower(Frp);
+        Fl.setPower(Flp);
+        Br.setPower(Brp);
+        Bl.setPower(Blp);
+      }
     }
   }
 }
