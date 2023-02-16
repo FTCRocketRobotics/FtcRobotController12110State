@@ -107,8 +107,10 @@ public class MecanumTeleOp extends LinearOpMode {
         cones += 1;
         lastClick = 1;
       } else if (gamepad2.dpad_down && lastClick == 0) {
-        cones -= 1;
-        lastClick = 1;
+        if (cones >= 1) {
+          cones -= 1;
+          lastClick = 1;
+        }
       } else if (gamepad2.dpad_right && lastClick == 0) {
         EncoderSlidesFix += 100;
         lastClick = 1;
@@ -139,7 +141,7 @@ public class MecanumTeleOp extends LinearOpMode {
       telemetry.addLine("Encoder Fix: " + EncoderSlidesFix);
       telemetry.addLine("Cones: " + cones);
       telemetry.addLine("Position: " + Lr.getCurrentPosition());
-      telemetry.addLine("servo: " + Geoff.getPosition());
+      telemetry.addLine("Servo Position: " + Geoff.getPosition());
       telemetry.update();
 
       Ll.setPower(Power);
