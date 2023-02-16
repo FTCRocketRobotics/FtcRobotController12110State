@@ -46,7 +46,7 @@ public class MecanumTeleOp extends LinearOpMode {
     if (isStopRequested()) return;
 
     while (opModeIsActive()) {
-      setPower();
+      setDrivePower();
 
       if (gamepad2.b) {
         target = 2100 + EncoderSlidesFix;
@@ -120,7 +120,7 @@ public class MecanumTeleOp extends LinearOpMode {
       Lr.setPower(-Power);
     }
 
-    void setPower() {
+    void setDrivePower() {
       double y = -gamepad1.left_stick_y;
       double x = gamepad1.left_stick_x;
       double rx = -gamepad1.right_stick_x;
