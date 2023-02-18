@@ -19,7 +19,7 @@ import org.firstinspires.ftc.teamcode.drive.DriveConstants;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.drive.SampleTankDrive;
 import org.firstinspires.ftc.teamcode.drive.StandardTrackingWheelLocalizer;
-import org.firstinspires.ftc.teamcode.tuning.TuningOpModes;
+//import org.firstinspires.ftc.teamcode.tuning.TuningOpModes;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -49,7 +49,7 @@ LogFiles {
         public long nsInit = System.nanoTime();
         public long nsStart, nsStop;
 
-        public String driveClassName = TuningOpModes.DRIVE_CLASS.getCanonicalName();
+//        public String driveClassName = TuningOpModes.DRIVE_CLASS.getCanonicalName();
 
         public double ticksPerRev = DriveConstants.TICKS_PER_REV;
         public double maxRpm = DriveConstants.MAX_RPM;

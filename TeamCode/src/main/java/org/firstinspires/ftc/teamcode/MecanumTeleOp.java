@@ -19,8 +19,8 @@ public class MecanumTeleOp extends LinearOpMode {
         DcMotor Ll = hardwareMap.dcMotor.get("Ll");
         Servo Geoff = hardwareMap.servo.get("Geoff");
 
-        Fr.setDirection(DcMotorSimple.Direction.REVERSE);
-        Br.setDirection(DcMotorSimple.Direction.REVERSE);
+        //Fr.setDirection(DcMotorSimple.Direction.REVERSE);
+        //Br.setDirection(DcMotorSimple.Direction.REVERSE);
 
         Lr.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
@@ -84,7 +84,7 @@ public class MecanumTeleOp extends LinearOpMode {
             } else if (gamepad2.a) {
                 target = (cones * 100);
             }
-            double error = target - Lr.getCurrentPosition();
+            double error = target - Ll.getCurrentPosition();
 
             IntegralSum += error;
 
@@ -129,7 +129,9 @@ public class MecanumTeleOp extends LinearOpMode {
 
             telemetry.addLine("Encoder Fix: " + EncoderSlidesFix);
             telemetry.addLine("Cones: " + cones);
-            telemetry.addLine("Position: " + Lr.getCurrentPosition());
+            telemetry.addLine("Position: " + Ll.getCurrentPosition());
+            telemetry.addLine("Power: " + Power);
+            telemetry.addLine("Target:" + target);
             telemetry.addLine("servo: " + Geoff.getPosition());
             telemetry.update();
 
