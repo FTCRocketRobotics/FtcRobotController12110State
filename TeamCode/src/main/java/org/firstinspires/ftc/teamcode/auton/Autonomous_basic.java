@@ -74,6 +74,9 @@ public class Autonomous_basic extends LinearOpMode
         DcMotor Lr = hardwareMap.dcMotor.get("Lr");
         DcMotor Ll = hardwareMap.dcMotor.get("Ll");
 
+        Fl.setDirection(DcMotor.Direction.REVERSE);
+        Bl.setDirection(DcMotor.Direction.REVERSE);
+
         Servo Geoff = hardwareMap.servo.get("Geoff");
 
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
@@ -184,10 +187,10 @@ public class Autonomous_basic extends LinearOpMode
 
         if(tagOfInterest == null || tagOfInterest.id == Left)
         {
-            Fr.setPower(-0.3);
-            Fl.setPower(0.3);
-            Br.setPower(0.3);
-            Bl.setPower(-0.3);
+            Fr.setPower(0.3);
+            Fl.setPower(-0.3);
+            Br.setPower(-0.3);
+            Bl.setPower(0.3);
             sleep(2200);
         }
         else if(tagOfInterest.id == Middle)
@@ -196,10 +199,10 @@ public class Autonomous_basic extends LinearOpMode
         }
         else
         {
-            Fr.setPower(0.3);
-            Fl.setPower(-0.3);
-            Br.setPower(-0.3);
-            Bl.setPower(0.3);
+            Fr.setPower(-0.3);
+            Fl.setPower(0.3);
+            Br.setPower(0.3);
+            Bl.setPower(-0.3);
             sleep(2700);
         }
         Fr.setPower(0);
@@ -209,9 +212,9 @@ public class Autonomous_basic extends LinearOpMode
 
         sleep(1000);
 
-        Fr.setPower(-0.2);
+        Fr.setPower(0.2);
         Fl.setPower(0.2);
-        Br.setPower(-0.2);
+        Br.setPower(0.2);
         Bl.setPower(0.2);
 
         sleep(3250);
